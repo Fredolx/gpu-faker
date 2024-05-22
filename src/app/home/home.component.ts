@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   processing: boolean = false;
   currentGPU: string = "Unknown";
   desiredGPU: string = "";
+  backupExists: boolean = false;
 
   constructor(private toast: ToastrService, private modal: NgbModal) {
 
@@ -21,6 +22,13 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCurrentGPU();
+    this.getBackupStatus();
+  }
+
+  getBackupStatus() {
+    invoke('backup_exists')
+      .then(response => this.backupExists = response as boolean)
+      .catch(e => this.handleError(e));
   }
 
   getCurrentGPU() {
@@ -34,11 +42,29 @@ export class HomeComponent implements OnInit {
   applyDesiredGPU() {
     this.processing = true;
     invoke('apply_desired_gpu', { gpu: this.desiredGPU })
-      .then(_ => this.getCurrentGPU())
+      .then(_ => {
+        this.backupExists = true;
+        this.getCurrentGPU();
+      })
       .catch(e => {
         this.handleError(e);
       })
       .finally(() => this.processing = false);
+  }
+
+  restore() {
+    this.processing = true;
+    invoke('restore')
+      .then(_ => {
+        this.getCurrentGPU();
+      })
+      .catch(e => {
+        this.handleError(e);
+      })
+      .finally(() => {
+        this.processing = false;
+        this.backupExists = false;
+      });
   }
 
   handleError(e: any) {
@@ -47,11 +73,11 @@ export class HomeComponent implements OnInit {
     this.toast.error("An error occured. Click here for more info")
       .onTap
       .pipe(take(1))
-      .subscribe(() => this.showError(error));  
+      .subscribe(() => this.showError(error));
   }
 
   showError(error: string) {
-    const modalRef = this.modal.open(ErrorModalComponent, { backdrop: 'static', size: 'xl'});
+    const modalRef = this.modal.open(ErrorModalComponent, { backdrop: 'static', size: 'xl' });
     modalRef.componentInstance.name = 'ErrorModal';
     modalRef.componentInstance.error = error;
   }

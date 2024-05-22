@@ -5,7 +5,7 @@
                 <span class="lbl">Current GPU Name:</span>
             </div>
             <div class="col">
-                <span class="lbl">
+                <span>
                     {{currentGPU}}
                 </span>
             </div>
@@ -18,8 +18,9 @@
                 <input autocomplete="off" spellcheck="false" style="width: 100%" [(ngModel)]="desiredGPU" name="GPU" required placeholder="NVIDIA GeForce RTX 4090 Ti" class="form-control">
             </div>
         </div>
-        <div class="mt-4 d-block w-100">
-            <button [disabled]="processing || form.invalid" class="btn btn-primary w-25 mx-auto d-block">Apply</button>
+        <div class="mt-4 text-center">
+            <button [disabled]="processing || form.invalid" class="btn btn-primary w-25">Apply</button>
+            <button [disabled]="processing || !backupExists" type="button" (click)="restore()" class="btn btn-secondary w-25 ms-2">Restore</button>
         </div>
     </form>
 </div>
