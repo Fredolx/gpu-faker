@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   processing: boolean = false;
   currentGPU: string = "Unknown";
   desiredGPU: string = "";
-  
+
   constructor(private toast: ToastrService) {
 
   }
@@ -21,14 +21,25 @@ export class HomeComponent implements OnInit {
   }
 
   getCurrentGPU() {
-    invoke('getCurrentGPU')
+    invoke('get_current_gpu')
       .then((response) => this.currentGPU = (response as string))
-      .catch((_) => this.toast.error("Failed to fetch GPU. You may be running an unsupported OS"))
+      .catch((e) => {
+        this.handleError(e);
+      });
   }
 
   applyDesiredGPU() {
-    invoke('applyDesiredGPU')
-      .then(_ => _)
-      .catch(_ => this.toast.error("Failed to apply desired GPU. You may be running an unsupported OS"))
+    this.processing = true;
+    invoke('apply_desired_gpu', { gpu: this.desiredGPU })
+      .then(_ => this.getCurrentGPU())
+      .catch(e => {
+        this.handleError(e);
+      })
+      .finally(() => this.processing = false);
+  }
+
+  handleError(e: any) {
+    console.log(e as string);
+    this.toast.error("Failed to fetch GPU. You may be running an unsupported OS")
   }
 }

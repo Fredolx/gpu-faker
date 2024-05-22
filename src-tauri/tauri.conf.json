@@ -4,7 +4,7 @@
     "beforeBuildCommand": "npm run build",
     "beforeDevCommand": "npm run start",
     "devPath": "http://localhost:4200",
-    "distDir": "../dist"
+    "distDir": "../dist/gpu-faker/browser"
   },
   "package": {
     "productName": "gpu-faker",
@@ -29,7 +29,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.dev",
+      "identifier": "dev.fredol.gpu-faker",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
