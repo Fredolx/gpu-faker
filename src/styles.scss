@@ -1,4 +1,4 @@
-@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import 'bootstrap/scss/bootstrap';
 @import 'ngx-toastr/toastr';
 
 body {
@@ -15,3 +15,31 @@ body {
 ::-webkit-scrollbar {
     display: none;
 }
+
+.lbl {
+    user-select: none;
+}
+
+.help-modal__container {
+    .help-modal {
+        background-color: #202124 !important;
+
+        .item {
+            background-color: #202124 !important;
+
+            .key {
+                background-color: #202124 !important;
+            }
+
+            .description {
+                color: white !important;
+            }
+        }
+    }
+}
+
+.modal-content {
+    border-radius: 22px !important;
+    background-color: #292b2c;
+}
+

@@ -2,18 +2,20 @@
     <form #form="ngForm" (ngSubmit)="applyDesiredGPU()" novalidate>
         <div class="row mt-4">
             <div class="col-4">
-                <span>Current GPU Name:</span>
+                <span class="lbl">Current GPU Name:</span>
             </div>
             <div class="col">
-                {{currentGPU}}
+                <span class="lbl">
+                    {{currentGPU}}
+                </span>
             </div>
         </div>
         <div class="row mt-4 align-items-center">
             <div class="col-4">
-                <span>Desired GPU Name:</span>
+                <span class="lbl">Desired GPU Name:</span>
             </div>
             <div class="col">
-                <input autocomplete="off" style="width: 100%" [(ngModel)]="desiredGPU" name="GPU" required placeholder="NVIDIA GeForce RTX 4090 Ti" class="form-control-sm">
+                <input autocomplete="off" spellcheck="false" style="width: 100%" [(ngModel)]="desiredGPU" name="GPU" required placeholder="NVIDIA GeForce RTX 4090 Ti" class="form-control">
             </div>
         </div>
         <div class="mt-4 d-block w-100">

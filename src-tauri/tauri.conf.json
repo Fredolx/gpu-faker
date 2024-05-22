@@ -12,7 +12,10 @@
   },
   "tauri": {
     "allowlist": {
-      "all": false
+      "all": false,
+      "shell": {
+        "open": true
+      }
     },
     "bundle": {
       "active": true,
@@ -58,7 +61,7 @@
         "fullscreen": false,
         "height": 250,
         "resizable": true,
-        "title": "GPU Faker",
+        "title": "GPU Faker by Frédéric Lachapelle",
         "maximizable": false,
         "width": 800,
         "minWidth": 715,
