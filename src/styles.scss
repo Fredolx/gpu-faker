@@ -1,0 +1,17 @@
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import 'ngx-toastr/toastr';
+
+body {
+    background-color: #202124;
+    color: white;
+    font-family: Hack;
+}
+
+@font-face {
+    font-family: Hack;
+    src: url(assets/Hack-Regular.ttf);
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
