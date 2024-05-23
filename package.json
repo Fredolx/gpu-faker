@@ -5,7 +5,7 @@
     "email": "frederic.lachapelle7@gmail.com",
     "url": "https://github.com/fredolx"
   },
-  "version": "0.1.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
