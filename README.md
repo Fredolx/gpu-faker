@@ -4,7 +4,7 @@
 </p>
 
 # GPU Faker
-### Change your GPU name to allow you to play GPU-locked titles like Arena Breakout Infinite. Fast & proudly made in Rust!
+### Fake your GPU to access GPU-locked apps and games like Arena Breakout Infinite. Ultra-fast and proudly made in Rust!
 
 <p align="center">
 <a href="https://www.patreon.com/fredol"><img alt="Ruffle" src="https://github.com/Fredolx/gpu-faker/blob/main/screenshot.png?raw=true" /></a>
