@@ -12,7 +12,7 @@
     "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "tauri": "tauri"
+    "tauri": "tauri build"
   },
   "private": true,
   "dependencies": {
