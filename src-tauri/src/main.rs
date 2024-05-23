@@ -82,14 +82,16 @@ fn backup(gpu: &String) -> Result<(), String> {
 fn restore() -> Result<(), String> {
     let path = get_backup_path()?;
     let gpu = fs::read_to_string(&path).map_err(map_error)?;
-    apply_desired_gpu(gpu)?;
+    apply_desired_gpu(gpu, None)?;
     fs::remove_file(path).map_err(map_error)?;
     Ok(())
 }
 
 #[tauri::command(async)]
-fn apply_desired_gpu(gpu: String) -> Result<(), String> {
-    backup(&gpu)?;
+fn apply_desired_gpu(gpu: String, old_gpu: Option<String>) -> Result<(), String> {
+    if let Some(old_gpu) = old_gpu {
+      backup(&old_gpu)?;
+    }
     let key = get_key(true)?;
     return key.set_value(REG_VALUE_NAME, &gpu).map_err(map_error);
 }

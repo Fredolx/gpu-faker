@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
 
   applyDesiredGPU() {
     this.processing = true;
-    invoke('apply_desired_gpu', { gpu: this.desiredGPU })
+    invoke('apply_desired_gpu', { gpu: this.desiredGPU, oldGpu: this.currentGPU })
       .then(_ => {
         this.backupExists = true;
         this.getCurrentGPU();
